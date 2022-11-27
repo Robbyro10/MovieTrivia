@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .btn {
+        border-radius: 0.25rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+body {
+    min-height: 100vh;
+    background-size: 300%;
+    background-image: linear-gradient(to right,#2dd4bf, #06b6d4, #6366f1);
+    padding: 50px;
+    padding-top: 20px;
+    animation: bg-animation 7s infinite alternate;
+}
+
+@keyframes bg-animation {
+    0% { background-position: left}
+    100% { background-position: right}
+}

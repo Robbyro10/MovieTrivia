@@ -7,7 +7,7 @@ export const GamePage = () => {
       <h1 className="text-center text-3xl">Game Page</h1>
       <Link
         to="/end"
-        className="bg-purple-600 px-3 py-1 rounded text-white hover:bg-purple-500"
+        className="bg-purple-600 btn text-white hover:bg-purple-500"
       >
         Finish Game
       </Link>

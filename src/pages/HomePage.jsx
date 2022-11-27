@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 export const HomePage = () => {
   return (
     <div className="text-center">
-      <h1 className="text-center text-3xl mb-4">Movie Trivia</h1>
+      <h1 className="text-6xl font-light text-white">Movie Trivia</h1>
+
       <Link
         to="/category"
-        className="bg-purple-600 px-3 py-1 rounded text-white hover:bg-purple-500"
+        className="bg-purple-600 btn text-white hover:bg-purple-500 relative"
       >
         SinglePlayer
+      </Link>
+      <Link
+        to="/category"
+        className="bg-purple-600 btn text-white hover:bg-purple-500 relative"
+      >
+        MultiPlayer
       </Link>
     </div>
   );
