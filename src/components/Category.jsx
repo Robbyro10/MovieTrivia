@@ -13,7 +13,7 @@ export const Category = ({ title }) => {
       </p>
       <button
         onClick={() => navigate("/game")}
-        className="btn w-1/2 max-w-sm bg-gradient-to-tr from-cyan-500 to-indigo-500 text-white font-medium drop-shadow-md"
+        className="btn w-1/2 transition ease-in-out bg- bg-blue-500 hover:bg-blue-600  text-white font-medium drop-shadow-md"
       >
         Select
       </button>
