@@ -1,23 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Button } from '../components';
+import logo from '../assets/movie.png';
 
 export const HomePage = () => {
   return (
-    <div className="text-center">
-      <h1 className="text-6xl font-light text-white">Movie Trivia</h1>
-
-      <Link
-        to="/category"
-        className="bg-purple-600 btn text-white hover:bg-purple-500 relative"
-      >
-        SinglePlayer
-      </Link>
-      <Link
-        to="/category"
-        className="bg-purple-600 btn text-white hover:bg-purple-500 relative"
-      >
-        MultiPlayer
-      </Link>
+    <div className="text-center min-h-screen flex items-center gap-8 flex-col justify-center">
+      <img src={logo} alt="logo" width="100"/>
+      <h1 className="text-5xl">Movie Trivia</h1>
+      <Button text="Single Player" route="/category" />
+      <Button text="Multiplayer" route="/category" />
     </div>
   );
 };

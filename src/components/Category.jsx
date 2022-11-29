@@ -1,22 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { Button } from "./Button";
 
-export const Category = ({ title }) => {
-  const navigate = useNavigate();
+export const Category = ({ title, description }) => {
   return (
-    <div className="container bg-white border p-2 shadow rounded mb-3 max-w-3xl">
-      <h1 className="text-2xl font-medium mb-2">{title}</h1>
-      <p className="mb-2 ">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod animi
-        vitae quam a impedit voluptate voluptates voluptatibus quidem ducimus
-        adipisci ea, praesentium quae deserunt eius officiis consequatur nihil
-        nisi.
+    <div className="container bg-primary-800 border-2 p-6 shadow rounded-lg mb-3 max-w-3xl">
+      <h1 className="text-2xl font-medium">{title}</h1>
+      <p className="my-4 ">
+        {
+          description || `Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quod animi vitae quam a impedit voluptate voluptates voluptatibus quidem ducimus adipisci ea, praesentium quae deserunt eius officiis consequatur nihil
+          nisi.`
+        }
       </p>
-      <button
-        onClick={() => navigate("/game")}
-        className="btn w-1/2 transition ease-in-out bg- bg-blue-500 hover:bg-blue-600  text-white font-medium drop-shadow-md"
-      >
-        Select
-      </button>
+      <Button text="Select" route="/game" color="bg-primary-1200" />
     </div>
   );
 };

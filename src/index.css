@@ -13,16 +13,43 @@
     }
 }
 
-body {
-    min-height: 100vh;
-    background-size: 300%;
-    background-image: linear-gradient(to right,#2dd4bf, #06b6d4, #6366f1);
-    padding: 50px;
-    padding-top: 20px;
-    animation: bg-animation 7s infinite alternate;
+@layer base {
+  :root {
+    --color-primary-200: 167 108 212;
+    --color-primary-400: 139 44 212;
+    --color-primary-600: 122 79 155;
+    --color-primary-800: 88 28 135;
+    --color-primary-1000: 55 18 84;
+    --color-primary-1200: 34 5 54;
+  }
+}
+
+#root {
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(rgb(var(--color-primary-200)), rgb(var(--color-primary-800)));
+  animation: bg-animation 7s infinite alternate;
+}
+
+.movie-container {
+  width: 95%;
+  max-width: 1200px;
+  @apply mx-auto;
+}
+
+.timer-warning {
+  animation: timer-warning 1s ease-in-out infinite alternate;
 }
 
 @keyframes bg-animation {
-    0% { background-position: left}
-    100% { background-position: right}
+  0% { background-position: left; }
+  100% { background-position: right; }
 }
+
+@keyframes timer-warning {
+  0% { color: red; transform: scale(.9); }
+  50% { color: white; transform: scale(1); }
+  100% { color: red; transform: scale(.9); }
+}
+
+

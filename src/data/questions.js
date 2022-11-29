@@ -1,5 +1,4 @@
-
-const questions = [
+export const questions = [
     {
         'title': 'Who said the phrase: "Some people are worth melting for."?',
         'category': 'characters',
@@ -31,7 +30,7 @@ const questions = [
             },
             {
                 'title': 'Chef Gusteau',
-                'correct': correct
+                'correct': true
             },
             {
                 'title': 'Elsa',
