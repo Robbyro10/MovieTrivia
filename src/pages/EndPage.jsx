@@ -1,28 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Button } from '../components';
 
 export const EndPage = () => {
   return (
     <div className="text-center">
-      <h1 className="text-center text-3xl mb-3">End Page</h1>
-      <Link
-        to="/"
-        className="mr-2 bg-purple-600 px-3 py-1 rounded text-white hover:bg-purple-500"
-      >
-        Main Menu
-      </Link>
-      <Link
-        to="/game"
-        className="mr-2 bg-purple-600 px-3 py-1 rounded text-white hover:bg-purple-500"
-      >
-        Play Again
-      </Link>
-      <Link
-        to="/category"
-        className="bg-purple-600 px-3 py-1 rounded text-white hover:bg-purple-500"
-      >
-        Change Category
-      </Link>
+      <h1 className="text-3xl mb-3">End Page</h1>
+      <Button text="Main Menu" route="/" />
+      <Button text="Play again" route="/game" />
+      <Button text="Change Category" route="/category" />
     </div>
   );
 };

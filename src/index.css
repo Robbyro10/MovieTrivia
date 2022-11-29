@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-200: 167 108 212;
+    --color-primary-400: 139 44 212;
+    --color-primary-600: 122 79 155;
+    --color-primary-800: 88 28 135;
+    --color-primary-1000: 55 18 84;
+    --color-primary-1200: 34 5 54;
+  }
+}
+
+#root {
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(rgb(var(--color-primary-200)), rgb(var(--color-primary-800)));
+}
+
+.movie-container {
+  width: 95%;
+  max-width: 1200px;
+  @apply mx-auto;
+}
