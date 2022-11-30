@@ -3,7 +3,7 @@ export const Select = ({options = []}) => {
   return (
     <div className="inline-block relative w-full mb-4">
       <select className="block cursor-pointer border-2 hover:border-primary-200 hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5) transition ease-linear duration-200 w-full rounded-lg appearance-none bg-primary-1200 p-4 text-xl shadow leading-tight outline-none ">
-        { options.map( op => <option> {`${op}`} </option>) }
+        { options.map( op => <option key={op}> {`${op}`} </option>) }
       </select>
       
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">

@@ -1,29 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { Button } from '../components';
+import { Link } from "react-router-dom";
+import { Button, Confetti, Question } from '../components';
 import { questions } from '../data/questions';
-import { Question } from "../components"; 
 
 export const GamePage = () => {
+  const repeatQuestions = [];
   //TODO: VALIDAR QUE NO SE REPITA EL NUMERO ALETORIO
-  //TODO: HACER USO DE USESTATE PARA EL MANEJO DEL ESTADO
-  const max = questions.length - 1;
+  const max = questions.length;
   const getRandomInt = (max) => Math.floor(Math.random() * max);
   const selectedQuestion = questions[getRandomInt(max)];
   const [question, setQuestion] = useState(selectedQuestion);
+  const [toCongratulate, setToCongratulate ] = useState(false);
+  const [points, setPoints] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
   const [time, setTime] = useState(15);
+  let timer = null;
+
+  const nextQuestion = () => {
+    setShowAnswer(false);
+    const random = getRandomInt(max);
+    setQuestion(questions[random]);
+    setTime(15);
+  }
+
+  const handleAnswerSelected = (isCorrect) => {
+    if ( isCorrect ) {
+      setPoints(points + time)
+      setToCongratulate(true);
+      setTimeout(() => {
+        setToCongratulate(false);
+      }, 3000);
+    }
+    setShowAnswer(true);
+    clearInterval(timer);
+  }
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    timer = setInterval(() => {
       if ( time > 0 ) setTime( time - 1);
-      else setTime( 15 );
+      else setShowAnswer(true);
     }, 1000);
-    return () => clearTimeout(timer);
-  });
+    return () => clearInterval(timer);
+  }, [time]);
   
   return (
-    <div className="movie-container pt-12">
-      <Question time={time} title={question.title} options={question.options}/>
-      <Button text="Finish Game" route="/end" />
-    </div>
+    <>
+      { toCongratulate ? <Confetti/> : <></> }
+      <div className="movie-container pt-12 flex flex-col gap-8 ">
+        <p className="flex items-center justify-center gap-4">Points: {points} <i className="fa-solid fa-coins"></i> </p>
+        <Question
+          time={time}
+          title={question.title}
+          options={question.options}
+          showAnswer={showAnswer}
+          onAction={handleAnswerSelected}
+        />
+        <div className="pt-8 flex flex-col gap-8 items-center">
+          { 
+            showAnswer ? <Button text="Next question" onAction={nextQuestion} /> : <></>
+          }
+            <Link
+              to="/end"
+              className={`
+                min-w-[125px] block px-3 py-2 rounded text-white border-2
+                w-full sm:w-max transparent hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5)]
+                hover:contrast-125 transition ease-linear duration-200
+                text-center
+              `}
+            >
+              Finish Game
+          </Link>
+        </div>
+      </div>
+    </>
   );
 };

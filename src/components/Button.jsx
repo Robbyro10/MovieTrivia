@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
-export const Button = ({text, route, color = 'bg-primary-1000'}) => {
+export const Button = ({ text, route, color = 'bg-primary-1000', onAction = () => {} }) => {
   return (
     <Link
       to={route}
+      onClick={ onAction }
       className={`
         min-w-[125px] block px-3 py-2 rounded text-white 
         w-full sm:w-max ${color} hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5)]
