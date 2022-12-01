@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, Confetti, Question } from '../components';
 import { questions } from '../data/questions';
 
 export const GamePage = () => {
+  const navigate = useNavigate();
   const repeatQuestions = [];
   //TODO: VALIDAR QUE NO SE REPITA EL NUMERO ALETORIO
   const max = questions.length;
@@ -11,6 +12,8 @@ export const GamePage = () => {
   const selectedQuestion = questions[getRandomInt(max)];
   const [question, setQuestion] = useState(selectedQuestion);
   const [toCongratulate, setToCongratulate ] = useState(false);
+  const [questionsAnsweredCorrectly, setQuestionsAnsweredCorrectly] = useState(0);
+  const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [points, setPoints] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [time, setTime] = useState(15);
@@ -24,15 +27,27 @@ export const GamePage = () => {
   }
 
   const handleAnswerSelected = (isCorrect) => {
+    new Audio(`../src/assets/audio/${ isCorrect ? 'won' : 'lose'}.wav`).play();
+
     if ( isCorrect ) {
       setPoints(points + time)
       setToCongratulate(true);
+      setQuestionsAnsweredCorrectly(questionsAnsweredCorrectly + 1);
       setTimeout(() => {
         setToCongratulate(false);
       }, 3000);
     }
+    
+    setQuestionsAnswered(questionsAnswered + 1);
     setShowAnswer(true);
     clearInterval(timer);
+  }
+
+  const finishGame = () => {
+    new Audio('../src/assets/audio/back.wav').play();
+    setTimeout(() => {
+      navigate(`/end?points=${points}&answered=${questionsAnswered}&correctly=${questionsAnsweredCorrectly}`);
+    }, 50);
   }
 
   useEffect(() => {
@@ -59,17 +74,17 @@ export const GamePage = () => {
           { 
             showAnswer ? <Button text="Next question" onAction={nextQuestion} /> : <></>
           }
-            <Link
-              to="/end"
+            <span
+              onClick={ finishGame }
               className={`
                 min-w-[125px] block px-3 py-2 rounded text-white border-2
-                w-full sm:w-max transparent hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5)]
+                w-full sm:w-max transparent hover:shadow-[0_0_0_4px_rgb(var(--color-primary-1200)/.5)]
                 hover:contrast-125 transition ease-linear duration-200
-                text-center
+                text-center cursor-pointer
               `}
             >
               Finish Game
-          </Link>
+          </span>
         </div>
       </div>
     </>

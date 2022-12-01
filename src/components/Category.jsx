@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 
 export const Category = ({ title, description }) => {
+  const navigate = useNavigate();
+
+  const goToGame = () => {
+    navigate('/game');
+  }
+  
   return (
     <div className="container bg-primary-800 border-2 p-6 shadow rounded-lg mb-3 max-w-3xl">
       <h1 className="text-2xl font-medium">{title}</h1>
@@ -10,7 +17,7 @@ export const Category = ({ title, description }) => {
           nisi.`
         }
       </p>
-      <Button text="Select" route="/game" color="bg-primary-1200" />
+      <Button text="Select" onAction={goToGame} color="bg-primary-1200" />
     </div>
   );
 };

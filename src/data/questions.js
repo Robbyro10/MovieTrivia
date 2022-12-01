@@ -163,7 +163,7 @@ export const questions = [
             },
             {
                 'title': 'yellow',
-                'isCorrect': true
+                'isCorrect': false
             },
             {
                 'title': 'green',
@@ -171,7 +171,7 @@ export const questions = [
             },
             {
                 'title': 'red',
-                'isCorrect': false
+                'isCorrect': true
             },
         ]
     },
