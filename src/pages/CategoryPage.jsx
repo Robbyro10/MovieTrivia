@@ -10,7 +10,6 @@ export const CategoryPage = () => {
       html: configurationHTML,
       showCloseButton: true,
       showCancelButton: true,
-      focusConfirm: false,
       customClass: {
         confirmButton: `class="min-w-[125px] block px-3 py-2 rounded text-white 
         w-full bg-primary-1000 hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5)]

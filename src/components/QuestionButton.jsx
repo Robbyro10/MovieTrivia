@@ -19,7 +19,7 @@ export const QuestionButton = ({
     <button
       onClick={clickAnswer}
       className={`
-        min-w-[125px] text-xl p-3 rounded text-white relative
+        min-w-[125px] mt-5 text-xl p-5 rounded text-white relative
         w-full ${color} hover:shadow-[0_0_0_4px_rgb(var(--color-primary-600)/.5)]
         hover:contrast-125 transition ease-linear duration-200 ${
           isSelected ? "bg-primary-200 border-2" : ""

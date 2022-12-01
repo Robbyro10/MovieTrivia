@@ -65,7 +65,7 @@ export const GamePage = () => {
     <>
       {toCongratulate ? <Confetti /> : <></>}
       <div className="movie-container pt-12 flex flex-col gap-8 animate__animated animate__fadeIn">
-        <p className="flex items-center justify-center gap-4">
+        <p className="text-2xl flex items-center justify-center gap-4">
           Points: {points} <i className="fa-solid fa-coins"></i>{" "}
         </p>
         <Question
