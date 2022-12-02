@@ -34,8 +34,8 @@ export const CategoryPage = () => {
       <div className="pt-4 flex justify-center">
         <div className="flex-col">
           <div className="flex justify-between items-center">
-            <h1 className="flex-1/2 text-3xl font-bold mb-5 text-white sm:text-4xl">
-              Choose Category!
+            <h1 className="flex-1/2 text-4xl font-bold mb-6 text-white">
+              Choose a Category!
             </h1>
             <button className="flex-1/2 text-2xl sm:text-4xl mb-5 pt-2 ">
               <i

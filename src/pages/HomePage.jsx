@@ -13,11 +13,11 @@ export const HomePage = () => {
 
   return (
     <div className="text-center flex items-center gap-8 flex-col justify-center animate__animated animate__fadeIn">
-      <h1 className="text-8xl my-10 font-semibold">Movie Trivia</h1>
+      <h1 className="text-8xl my-20 font-semibold">Movie Trivia</h1>
       <img
         src={logo}
         alt="logo"
-        className="mb-4 mt-4 w-1/3 drop-shadow-[0px_0px_5px_rgba(0,0,0,0.5)] resize"
+        className="mb-4 mt-4 w-1/3 lg:w-1/4 drop-shadow-[0px_0px_5px_rgba(0,0,0,0.5)] resize"
       />
       <div className="flex-col mt-20">
         <button

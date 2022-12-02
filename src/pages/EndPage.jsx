@@ -33,7 +33,7 @@ export const EndPage = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="flex-col mt-32 bg-primary-1000 bg text-center animate__animated animate__fadeIn border border-primary-1000 rounded-lg w-3/4">
+      <div className="flex-col mt-32 bg-primary-1000 bg text-center animate__animated animate__fadeIn rounded-lg w-3/4">
         <p className="text-3xl md:text-5xl font-bold px-4 py-8">{message}</p>
         <p className="flex items-center justify-center gap-4 text-3xl py-8">
           Points: {points} <i className="fa-solid fa-coins"></i>{" "}
@@ -43,7 +43,7 @@ export const EndPage = () => {
         <p className="text-xl mt-4">Questions answered correctly:</p>
         <h1 className="text-4xl font-bold mt-4">{correctly}</h1>
 
-        <div className="flex gap-6 flex-wrap justify-center  p-7">
+        <div className="flex gap-6 flex-wrap justify-center mb-3 p-7">
           <Button text="Main Menu" color="bg-primary-400" route="/" />
           <Button text="Play again" color="bg-primary-400" route="/game" />
           <Button
