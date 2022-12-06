@@ -32,16 +32,16 @@ export const EndPage = () => {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="flex-col mt-32 bg-primary-1000 bg text-center animate__animated animate__fadeIn rounded-lg w-3/4">
+    <div className="min-h-[100vh] flex justify-center items-center">
+      <div className="w-full max-w-[550px] bg-primary-1000 bg text-center animate__animated animate__fadeIn rounded-lg">
         <p className="text-3xl md:text-5xl font-bold px-4 py-8">{message}</p>
         <p className="flex items-center justify-center gap-4 text-3xl py-8">
           Points: {points} <i className="fa-solid fa-coins"></i>{" "}
         </p>
         <p className="text-xl mb-3">Questions answered:</p>
-        <h1 className="text-4xl font-bold">{answered}</h1>
-        <p className="text-xl mt-4">Questions answered correctly:</p>
-        <h1 className="text-4xl font-bold mt-4">{correctly}</h1>
+        <h1 className="text-3xl font-bold">{answered}</h1>
+        <p className="text-xl py-4">Questions answered correctly:</p>
+        <h1 className="text-3xl font-bold ">{correctly}</h1>
 
         <div className="flex gap-6 flex-wrap justify-center mb-3 p-7">
           <Button text="Main Menu" color="bg-primary-400" route="/" />

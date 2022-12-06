@@ -10,9 +10,9 @@ export const Question = ({
 }) => {
   return (
     <div className="flex items-center justify-center gap-8 flex-col">
-      <p className="text-4xl text-center"> {title} </p>
+      <p className="text-3xl text-center"> {title} </p>
       <Timer time={time} />
-      <div className="grid grid-cols-2 gap-9 mb-6">
+      <div className="grid grid-cols-2 gap-8">
         {options.map((op) => (
           <QuestionButton
             onAction={onAction}

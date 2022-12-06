@@ -1,9 +1,10 @@
 import { ArrowBack, Category, Select } from "../components";
 import { configurationHTML } from "../data/configuration.html";
+import audio from '../assets/audio/back.wav';
 
 export const CategoryPage = () => {
   const openConfiguration = () => {
-    new Audio("../src/assets/audio/back.wav").play();
+    new Audio(audio).play();
     Swal.fire({
       title: "<strong>Configuration</strong>",
       icon: "info",
@@ -25,7 +26,7 @@ export const CategoryPage = () => {
       confirmButtonAriaLabel: "Save",
       cancelButtonText: "Cancel",
       cancelButtonAriaLabel: "Cancel",
-    }).then(() => new Audio("../src/assets/audio/back.wav").play());
+    }).then(() => new Audio(audio).play());
   };
 
   return (
@@ -34,10 +35,10 @@ export const CategoryPage = () => {
       <div className="pt-4 flex justify-center">
         <div className="flex-col">
           <div className="flex justify-between items-center">
-            <h1 className="flex-1/2 text-4xl font-bold mb-6 text-white">
+            <h1 className="text-3xl sm:text-4xl font-semibold mb-6 text-white">
               Choose a Category!
             </h1>
-            <button className="flex-1/2 text-2xl sm:text-4xl mb-5 pt-2 ">
+            <button className="text-2xl sm:text-4xl mb-5 pt-2 ">
               <i
                 onClick={openConfiguration}
                 className="fa-solid fa-gear text-white hover:text-gray-100"
@@ -56,9 +57,24 @@ export const CategoryPage = () => {
             ]}
           />
 
-          <Category title={"Who Said That?"} />
-          <Category title={"Why are we Here?"} />
-          <Category title={"Obama Care?"} />
+          <Category 
+            title={"Who Said That?"}
+            description={`
+              Movie quotes will show up and you must identify the character that said the quoute!
+            `} 
+          />
+          <Category 
+            title={"Wich movie?"} 
+            description={`
+              Clues or information about movie wil be provided, can you identify it?
+            `}
+          />
+          <Category 
+            title={"Cool fact!"}
+            description={`
+              you will be asked for specific details about a certain movies, this will truly test your knowledge. Try it!
+            `}
+          />
         </div>
       </div>
     </div>

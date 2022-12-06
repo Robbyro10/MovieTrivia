@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
     .btn {
         border-radius: 0.25rem;
@@ -29,6 +28,10 @@
   min-height: 100vh;
   background: linear-gradient(rgb(var(--color-primary-200)), rgb(var(--color-primary-800)));
   animation: bg-animation 7s infinite alternate;
+}
+
+.cursive {
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .movie-container {
@@ -62,6 +65,7 @@
 .question-button.incorrect::after { --color: red; --content:"👎" }
 
 .confetti {
+  pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,6 +218,21 @@
   animation: resize 1.45s ease-in-out infinite alternate;
 }
 
+.toast {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 300ms;
+}
+
+.toast.showToast {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.swal2-actions {
+  gap: 2rem !important;
+}
+
 @keyframes makeItRain {
   from {opacity: 0;}
   50% {opacity: 1;}
@@ -236,8 +255,9 @@
   100% { color: red; transform: scale(.9); }
 }
 
-.swal2-actions {
-  gap: 2rem !important;
+@keyframes show-toast {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 

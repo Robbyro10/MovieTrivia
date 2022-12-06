@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Confetti, Question } from "../components";
 import { questions } from "../data/questions";
+import backAudio from '../assets/audio/back.wav'
+import wonAudio from '../assets/audio/won.wav'
+import loseAudio from '../assets/audio/lose.wav'
 
 export const GamePage = () => {
   const navigate = useNavigate();
@@ -28,7 +31,7 @@ export const GamePage = () => {
   };
 
   const handleAnswerSelected = (isCorrect) => {
-    new Audio(`../src/assets/audio/${isCorrect ? "won" : "lose"}.wav`).play();
+    new Audio(isCorrect ? wonAudio : loseAudio).play();
 
     if (isCorrect) {
       setPoints(points + time);
@@ -45,7 +48,7 @@ export const GamePage = () => {
   };
 
   const finishGame = () => {
-    new Audio("../src/assets/audio/back.wav").play();
+    new Audio(backAudio).play();
     setTimeout(() => {
       navigate(
         `/end?points=${points}&answered=${questionsAnswered}&correctly=${questionsAnsweredCorrectly}`
@@ -75,22 +78,28 @@ export const GamePage = () => {
           showAnswer={showAnswer}
           onAction={handleAnswerSelected}
         />
-        <div className="pt-8 flex flex-col gap-8 items-center">
-          {showAnswer && (
-            <Button text="Next question" onAction={nextQuestion} />
-          )}
-          <span
-            onClick={finishGame}
-            className={`
-                min-w-[125px] px-3 py-2 rounded text-white border-2
-                w-1/2 transparent hover:shadow-[0_0_0_4px_rgb(var(--color-primary-1200)/.5)]
-                hover:contrast-125 transition ease-linear duration-200
-                text-center cursor-pointer
-              `}
-          >
-            Finish Game
-          </span>
-        </div>
+
+        {
+          showAnswer && (
+            <div className="pt-8 grid grid-cols-2 gap-8 items-center w-full sm:w-[55%] mx-auto">
+
+              <span
+                onClick={finishGame}
+                className={`
+                  min-w-[125px] px-3 py-2 rounded text-white border-2 block 
+                  transparent hover:shadow-[0_0_0_4px_rgb(var(--color-primary-1200)/.5)]
+                  hover:contrast-125 transition ease-linear duration-200
+                  text-center cursor-pointer
+                `}
+              >
+                Finish Game
+              </span>
+
+              <Button text="Next question" onAction={nextQuestion} />
+              
+            </div>
+          )
+        }
       </div>
     </>
   );

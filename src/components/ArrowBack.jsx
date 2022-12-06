@@ -1,11 +1,12 @@
 
 import { useNavigate } from "react-router-dom";
+import audio from '../assets/audio/back.wav'
 
 export const ArrowBack = ( { text, route } ) => {
   const navigate = useNavigate();
 
   const redirect = () => {
-    new Audio('../src/assets/audio/back.wav').play();
+    new Audio(audio).play();
     setTimeout(() => {
       navigate(route);
     }, 50);

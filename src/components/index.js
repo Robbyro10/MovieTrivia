@@ -6,3 +6,4 @@ export * from './Question';
 export * from './Timer';
 export * from './QuestionButton';
 export * from './Confetti';
+export * from './Participant';
