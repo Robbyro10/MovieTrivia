@@ -1,17 +1,53 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/movie.png";
-import audio from "../assets/audio/select2.wav";
+import audioSelect from "../assets/audio/select2.wav";
+import audioTune from "../assets/audio/init.mp3";
+
+const audioSound = new Audio(audioTune);
+audioSound.loop = true;
 
 export const HomePage = () => {
   const navigate = useNavigate();
+  const [musicStatus, setMusicStatus] = useState( true );
+  useEffect( () => { audioSound.load(); }, [])
+
+  const startMusicAudio = async () => {
+    if( musicStatus ) audioSound.pause();
+    else {
+      try {
+        await audioSound.play();
+      } catch (error) {
+        console.log('Error al reproducir el audio...', error);
+      }
+    }
+  }
+
+  useEffect( () => {
+    startMusicAudio();
+  }, [musicStatus])
+
   const handleClick = ({ isMultiplayer = false }) => {
-    new Audio(audio).play();
-    if (isMultiplayer) navigate("/waiting-room");
-    else navigate("/category");
+    setMusicStatus(true);
+    setTimeout(() => {
+      console.log(musicStatus);
+      new Audio(audioSelect).play();
+      if (isMultiplayer) navigate("/waiting-room");
+      else navigate("/category");
+    }, 0);
   };
 
   return (
-    <div className="min-h-[90vh] text-center flex items-center gap-8 flex-col justify-between animate__animated animate__fadeIn py-10">
+    <div className="min-h-[90vh] text-center flex items-center gap-8 flex-col justify-between animate__animated animate__fadeIn py-10 relative">
+      
+      <div className="flex flex-col gap-2">
+        <i 
+          className={ `fa-solid text-2xl lg:text-4xl cursor-pointer ${ !musicStatus ? "fa-volume-xmark" : "fa-music" }` }
+          onClick={ () => setMusicStatus( prev => { return !prev } )}
+        ></i>
+        <span> { !musicStatus ? "Stop music" : "Play music" } </span>
+      </div>
+      
       <h1 className="cursive text-6xl lg:text-7xl font-semibold">
         Movie Trivia
       </h1>

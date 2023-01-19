@@ -33,7 +33,7 @@ export const EndPage = () => {
 
   return (
     <div className="min-h-[100vh] flex justify-center items-center">
-      <div className="w-full max-w-[550px] bg-primary-1000 bg text-center animate__animated animate__fadeIn rounded-lg">
+      <div className="w-full max-w-[550px] bg-primary-1000 text-center animate__animated animate__fadeIn rounded-lg">
         <p className="text-3xl md:text-5xl font-bold px-4 py-8">{message}</p>
         <p className="flex items-center justify-center gap-4 text-3xl py-8">
           Points: {points} <i className="fa-solid fa-coins"></i>{" "}

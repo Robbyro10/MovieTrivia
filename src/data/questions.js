@@ -185,7 +185,7 @@ export const questions = [
             },
             {
                 'title': 'King kong',
-                'isCorrect': true
+                'isCorrect': false
             },
             {
                 'title': 'Robocop',

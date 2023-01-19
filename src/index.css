@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-    .btn {
-        border-radius: 0.25rem;
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
+  .btn {
+    border-radius: 0.25rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
 }
 
 @layer base {
@@ -23,15 +23,32 @@
   }
 }
 
+.bg {
+  min-height: 100vh;
+  animation: slide 6s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(var(--color-primary-400)) 50%, rgb(var(--color-primary-800)) 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.6;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:7s;
+}
+
+.bg3 {
+  animation-duration:8s;
+}
+
 #root {
   color: white;
   min-height: 100vh;
-  background: linear-gradient(rgb(var(--color-primary-200)), rgb(var(--color-primary-800)));
-  animation: bg-animation 7s infinite alternate;
-}
-
-.cursive {
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Sriracha', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .movie-container {
@@ -240,8 +257,9 @@
 }
 
 @keyframes bg-animation {
-  0% { background-position: left; }
-  100% { background-position: right; }
+  0% { background-position: 0 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0 50% }
 }
 
 @keyframes resize {
@@ -258,6 +276,15 @@
 @keyframes show-toast {
   from { opacity: 0; transform: translateY(100%); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
 }
 
 
