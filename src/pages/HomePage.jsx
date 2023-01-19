@@ -9,23 +9,25 @@ audioSound.loop = true;
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [musicStatus, setMusicStatus] = useState( true );
-  useEffect( () => { audioSound.load(); }, [])
+  const [musicStatus, setMusicStatus] = useState(true);
+  useEffect(() => {
+    audioSound.load();
+  }, []);
 
   const startMusicAudio = async () => {
-    if( musicStatus ) audioSound.pause();
+    if (musicStatus) audioSound.pause();
     else {
       try {
         await audioSound.play();
       } catch (error) {
-        console.log('Error al reproducir el audio...', error);
+        console.log("Error al reproducir el audio...", error);
       }
     }
-  }
+  };
 
-  useEffect( () => {
+  useEffect(() => {
     startMusicAudio();
-  }, [musicStatus])
+  }, [musicStatus]);
 
   const handleClick = ({ isMultiplayer = false }) => {
     setMusicStatus(true);
@@ -39,18 +41,21 @@ export const HomePage = () => {
 
   return (
     <div className="min-h-[90vh] text-center flex items-center gap-8 flex-col justify-between animate__animated animate__fadeIn py-10 relative">
-      
       <div className="flex flex-col gap-2">
-        <i 
-          className={ `fa-solid text-2xl lg:text-4xl cursor-pointer ${ !musicStatus ? "fa-volume-xmark" : "fa-music" }` }
-          onClick={ () => setMusicStatus( prev => { return !prev } )}
+        <i
+          className={`fa-solid text-2xl lg:text-4xl cursor-pointer ${
+            !musicStatus ? "fa-volume-xmark" : "fa-music"
+          }`}
+          onClick={() =>
+            setMusicStatus((prev) => {
+              return !prev;
+            })
+          }
         ></i>
-        <span> { !musicStatus ? "Stop music" : "Play music" } </span>
+        <span> {!musicStatus ? "Stop music" : "Play music"} </span>
       </div>
-      
-      <h1 className="cursive text-6xl lg:text-7xl font-semibold">
-        Movie Trivia
-      </h1>
+
+      <h1 className="cursive text-9xl font-semibold">Movie Trivia</h1>
       <img
         src={logo}
         alt="logo"
