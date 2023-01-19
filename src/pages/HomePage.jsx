@@ -55,7 +55,9 @@ export const HomePage = () => {
         <span> {!musicStatus ? "Stop music" : "Play music"} </span>
       </div>
 
-      <h1 className="cursive text-9xl font-semibold">Movie Trivia</h1>
+      <h1 className="cursive text-7xl lg:text-7xl font-semibold">
+        Movie Trivia
+      </h1>
       <img
         src={logo}
         alt="logo"
