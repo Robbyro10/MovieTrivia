@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 
-export const Category = ({ title, description }) => {
+export const Category = ({ title, description, routeToGame = '/game' }) => {
   const navigate = useNavigate();
 
   const goToGame = () => {
-    navigate("/game");
+    navigate(routeToGame);
   };
 
   return (

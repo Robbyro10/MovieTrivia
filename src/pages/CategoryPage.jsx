@@ -61,7 +61,7 @@ export const CategoryPage = () => {
             title={"Who Said That?"}
             description={`
               Movie quotes will show up and you must identify the character that said the quoute!
-            `} 
+            `}
           />
           <Category 
             title={"Wich movie?"} 
@@ -72,8 +72,15 @@ export const CategoryPage = () => {
           <Category 
             title={"Cool fact!"}
             description={`
-              you will be asked for specific details about a certain movies, this will truly test your knowledge. Try it!
+              You will be asked for specific details about a certain movies, this will truly test your knowledge. Try it!
             `}
+          />
+          <Category 
+            title={"Three lives!"}
+            description={`
+              You will have three attempts to see how far you can go. Are you ready?
+            `}
+            routeToGame={"/game?lives=3"}
           />
         </div>
       </div>
