@@ -32,18 +32,18 @@ export const EndPage = () => {
   };
 
   return (
-    <div className="min-h-[100vh] flex justify-center items-center">
+    <div className="min-h-[85vh] flex justify-center items-center">
       <div className="w-full max-w-[550px] bg-primary-1000 text-center animate__animated animate__fadeIn rounded-lg">
-        <p className="text-3xl md:text-5xl font-bold px-4 py-8">{message}</p>
-        <p className="flex items-center justify-center gap-4 text-3xl py-8">
-          Points: {points} <i className="fa-solid fa-coins"></i>{" "}
+        <p className="text-3xl md:text-5xl font-bold px-4 pt-8 pb-6">{message}</p>
+        <p className="flex items-center justify-center gap-4 text-3xl py-6">
+          Points: {points} <i style={{color: "yellow"}} className="fa-solid fa-coins"></i>{" "}
         </p>
         <p className="text-xl mb-3">Questions answered:</p>
         <h1 className="text-3xl font-bold">{answered}</h1>
         <p className="text-xl py-4">Questions answered correctly:</p>
         <h1 className="text-3xl font-bold ">{correctly}</h1>
 
-        <div className="flex gap-6 flex-wrap justify-center mb-3 p-7">
+        <div className="flex gap-6 flex-wrap justify-center p-7 pb-8">
           <Button text="Main Menu" color="bg-primary-400" route="/" />
           <Button text="Play again" color="bg-primary-400" route="/game" />
           <Button

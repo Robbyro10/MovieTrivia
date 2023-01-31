@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { CategoryPage, EndPage, GamePage, HomePage, WaitingRoomPage } from "../pages";
+import { Navbar } from "../components";
 
 export const AppRouter = () => {
   return (
@@ -9,6 +10,7 @@ export const AppRouter = () => {
       <div className="bg bg2"></div>
       <div className="bg bg3"></div>
       <div className="movie-container">
+        <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/category" element={<CategoryPage />} />

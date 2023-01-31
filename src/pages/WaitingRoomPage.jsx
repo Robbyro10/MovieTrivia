@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, ArrowBack, Participant } from "../components";
-import selectAudio from "../assets/audio/select2.wav";
-import wrongAudio from "../assets/audio/back.wav";
+import audio from "../assets/audio/select2.wav";
+import audioBack from "../assets/audio/back.wav";
+
+const audioSelect = new Audio(audio);
+audioSelect.volume = 0.25;
+const backAudio = new Audio(audioBack);
+backAudio.volume = 0.25;
 
 export const WaitingRoomPage = () => {
+  const navigate = useNavigate();
   const getRandomCode = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -13,9 +20,9 @@ export const WaitingRoomPage = () => {
   const copyToClipboard = async (textToCopy) => {
     try {
       await navigator.clipboard.writeText(textToCopy);
-      new Audio(selectAudio).play();
+      audioSelect.play();
     } catch (error) {
-      new Audio(wrongAudio).play();
+      backAudio.play();
       setErrorMessage("Something wrong happened copying the code 😥");
     } finally {
       setIsCopied(true);
@@ -26,15 +33,23 @@ export const WaitingRoomPage = () => {
   };
 
   const numberOfParticipants = getRandomCode(1, 6);
-  const [participants] = useState(
+  const [participants, setParticipants] = useState(
     Array(Number(numberOfParticipants)).fill(undefined)
   );
   const [code] = useState(getRandomCode(10000, 99999));
   const [isCopied, setIsCopied] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+  useEffect( () => {
+    fetch('https://randomuser.me/api/?results='+numberOfParticipants)
+      .then( result => result.json())
+      .then( ({results}) => 
+        setParticipants(participants.map( (_, index) => ({name: results[index].name.first, img: results[index].picture.thumbnail})))
+      )
+  }, [])
+
   return (
-    <div className="min-h-[85vh] sm:min-h-[100vh] flex justify-center items-center flex-col gap-8">
+    <div className="min-h-[85vh] sm:min-h-[100vh] flex items-center flex-col gap-6">
       {
         <div
           className={`text-center min-w-[120px] p-4 fixed z-20 bottom-6
@@ -62,13 +77,13 @@ export const WaitingRoomPage = () => {
         <p className="text-sm mb-6">Press to copy</p>
 
         <div className="flex flex-wrap gap-8 text-sm mb-6">
-          {participants.map((_, index) => (
-            <Participant key={index} />
+          {participants.map((p, index) => (
+            <Participant key={index} name={p?.name} img={p?.img} />
           ))}
         </div>
 
         <div className="flex justify-center">
-          <Button text="Play" color="bg-primary-400" route="/category" />
+          <Button text="Play" color="bg-primary-400" onAction={ () => { navigate('/category') } } />
         </div>
       </div>
     </div>

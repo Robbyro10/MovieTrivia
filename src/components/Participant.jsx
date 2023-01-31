@@ -1,7 +1,7 @@
 import { useState } from "react";
 import noProfile from "../assets/no-profile.png";
 
-export const Participant = (  ) => {
+export const Participant = ( {img, name} ) => {
   const getRandomNumber = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -11,8 +11,8 @@ export const Participant = (  ) => {
   
   return (
     <div>
-      <img className="rounded-full" src={noProfile} alt="profile" width="65" />
-      <span>Guest-{random}</span>
+      <img className="rounded-full object-cover w-[48px]" src={img || noProfile} alt="profile"/>
+      <span>{ name || `Guest-${random}` }</span>
     </div>
   )
 }
