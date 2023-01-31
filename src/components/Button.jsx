@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import audio from '../assets/audio/select2.wav'
 
+const audioSelect = new Audio(audio);
+
 export const Button = ({
   text,
   route,
@@ -9,11 +11,11 @@ export const Button = ({
   cssClases,
   onAction = () => {},
 }) => {
-  const handleClick = () => {
-    new Audio(audio).play();
-    setTimeout(() => {
-      onAction();
-    }, 50);
+  const handleClick = async () => {
+    const audioSelect = new Audio(audio);
+    audioSelect.volume = 0.2;
+    await audioSelect.play();
+    onAction();
   };
 
   return (

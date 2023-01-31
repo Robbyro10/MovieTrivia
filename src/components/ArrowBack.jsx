@@ -5,11 +5,9 @@ import audio from '../assets/audio/back.wav'
 export const ArrowBack = ( { text, route } ) => {
   const navigate = useNavigate();
 
-  const redirect = () => {
-    new Audio(audio).play();
-    setTimeout(() => {
-      navigate(route);
-    }, 50);
+  const redirect = async () => {
+    await new Audio(audio).play();
+    navigate(route);
   }
   
   return (

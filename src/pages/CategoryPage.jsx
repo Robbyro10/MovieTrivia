@@ -30,7 +30,7 @@ export const CategoryPage = () => {
   };
 
   return (
-    <div className="movie-container pt-8 animate__animated animate__fadeIn">
+    <div className="pt-8 animate__animated animate__fadeIn">
       <ArrowBack route="/" />
       <div className="pt-4 flex justify-center">
         <div className="flex-col">
